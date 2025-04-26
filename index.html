@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garima's Annoyance Zone 😈</title>
+    <style>
+        :root {
+            --pink: #ff9ff3;
+            --yellow: #feca57;
+            --green: #1dd1a1;
+        }
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(45deg, var(--pink), var(--yellow));
+            min-height: 100vh;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><text x="0" y="20" font-size="20">🍌</text></svg>'), auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            animation: rainbow 2s infinite;
+        }
+
+        .annoy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .annoy-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .annoy-item:hover {
+            transform: rotate(3deg) scale(1.05);
+            background: #fff3cd;
+        }
+
+        .annoy-item::after {
+            content: '🤪';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            font-size: 2em;
+            opacity: 0.3;
+        }
+
+        .bounce {
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        .spin {
+            animation: spin 2s infinite linear;
+        }
+
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes rainbow {
+            0% { color: #ff0000; }
+            25% { color: #ff00ff; }
+            50% { color: #0000ff; }
+            75% { color: #00ffff; }
+            100% { color: #ff0000; }
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--green);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .panic-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 1rem 2rem;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="float">🎉 Welcome to Garima's Annoyance Zone! 🎉</h1>
+        <p class="spin">You can look but you can't escape! 😜</p>
+    </header>
+
+    <div class="annoy-container">
+        <!-- Image Card -->
+        <div class="annoy-item bounce">
+            <img src="embarrassing-photo.jpg" alt="Funny Memory" style="width:100%; border-radius:10px;">
+            <h3>Remember this? 🤣</h3>
+            <p>That time you tried to ______ and failed spectacularly! 💥</p>
+        </div>
+
+        <!-- Note Card -->
+        <div class="annoy-item" onclick="showPopup()">
+            <div class="spin" style="font-size:3em; text-align:center">📌</div>
+            <h3>Secret Message! 👀</h3>
+            <p>Click to reveal why you're the BEST friend ever! (jk 😜)</p>
+        </div>
+
+        <!-- Add more annoying items here -->
+    </div>
+
+    <div class="popup" id="annoyPopup">
+        🎉 Surprise! You've been Garima-fied! 🎉<br>
+        <button onclick="closePopup()" style="margin-top:10px;">Close? Nice try! 😈</button>
+    </div>
+
+    <button class="panic-button" onclick="panic()">🚨 PANIC BUTTON 🚨</button>
+
+    <script>
+        // Annoying popup logic
+        function showPopup() {
+            const popup = document.getElementById('annoyPopup');
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.transform = 'scale(1.2)';
+                popup.style.background = '#ff9ff3';
+            }, 1000);
+        }
+
+        function closePopup() {
+            document.getElementById('annoyPopup').style.display = 'none';
+            // Reopen after random time
+            setTimeout(showPopup, Math.random() * 5000 + 1000);
+        }
+
+        // Panic button that does nothing helpful
+        function panic() {
+            alert("🚨 Too late! The annoyance is permanent! 🚨");
+            document.body.style.background = 'linear-gradient(45deg, #ff0000, #ffff00)';
+            setTimeout(() => {
+                document.body.style.background = 'linear-gradient(45deg, #ff9ff3, #feca57)';
+            }, 1000);
+        }
+
+        // Randomly move items
+        setInterval(() => {
+            document.querySelectorAll('.annoy-item').forEach(item => {
+                item.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+            });
+        }, 3000);
+
+        // Easter egg: Konami code
+        let konamiCode = [];
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.key);
+            if (konamiCode.join('').includes('ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba')) {
+                document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%">🍌 Secret Banana Mode Activated! 🍌</h1>';
+            }
+        });
+    </script>
+</body>
+</html>
